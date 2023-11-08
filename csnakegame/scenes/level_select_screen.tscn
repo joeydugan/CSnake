@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3 uid="uid://dln5duhigj10e"]
+
+[ext_resource type="Script" path="res://scenes/level_select_screen.gd" id="1_2umfe"]
+[ext_resource type="Texture2D" uid="uid://ce7sma4dnqqke" path="res://sprites/bg.png" id="2_wt16x"]
+
+[node name="LevelSelectScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_2umfe")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_wt16x")
+centered = false
+
+[node name="BFS1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 397.0
+offset_right = 402.0
+offset_bottom = 458.0
+text = "Level 1"
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 132.0
+offset_right = 844.0
+offset_bottom = 242.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 64
+text = "Welcome to CSnake!"
+
+[node name="DFS1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 201.0
+offset_top = 551.0
+offset_right = 400.0
+offset_bottom = 610.0
+text = "Level 1"
+
+[node name="Breadth-First Search" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 410.0
+offset_right = 197.0
+offset_bottom = 451.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Breadth-First Search:"
+
+[node name="Depth-First Search" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 567.0
+offset_right = 195.0
+offset_bottom = 601.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "Depth-First Search:"
+
+[connection signal="pressed" from="BFS1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="DFS1" to="." method="_on_dfs_1_pressed"]
