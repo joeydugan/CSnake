@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcxia27cc1sat"]
+
+[ext_resource type="Script" path="res://scenes/BFS1.gd" id="1_6befe"]
+[ext_resource type="PackedScene" uid="uid://dbjnecgl87bvo" path="res://scenes/snake_segment.tscn" id="2_23pwf"]
+[ext_resource type="Texture2D" uid="uid://ce7sma4dnqqke" path="res://sprites/bg.png" id="3_1dbd1"]
+[ext_resource type="Texture2D" uid="uid://7wwa1ye03iga" path="res://sprites/num1.png" id="4_sds4f"]
+[ext_resource type="Texture2D" uid="uid://bmefb25w3nvp6" path="res://sprites/num2.png" id="5_if73j"]
+[ext_resource type="Texture2D" uid="uid://ccfuigqym1bgm" path="res://sprites/num3.png" id="6_4lflv"]
+
+[node name="BFS1" type="Node"]
+script = ExtResource("1_6befe")
+snake_scene = ExtResource("2_23pwf")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(500, 500)
+texture = ExtResource("3_1dbd1")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="num1" type="Sprite2D" parent="."]
+texture = ExtResource("4_sds4f")
+centered = false
+
+[node name="num2" type="Sprite2D" parent="."]
+texture = ExtResource("5_if73j")
+centered = false
+
+[node name="num3" type="Sprite2D" parent="."]
+texture = ExtResource("6_4lflv")
+centered = false
+
+[node name="Instructions" type="RichTextLabel" parent="."]
+offset_left = 245.0
+offset_top = 122.0
+offset_right = 777.0
+offset_bottom = 176.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "Complete A Breadth-First Search!"
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
