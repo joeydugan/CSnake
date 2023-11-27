@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhcftmurjbfwo"]
+
+[ext_resource type="Script" path="res://scenes/cosmetics.gd" id="1_kq1dt"]
+[ext_resource type="Texture2D" uid="uid://ce7sma4dnqqke" path="res://sprites/bg.png" id="6_c7id2"]
+
+[node name="cosmetics" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kq1dt")
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("6_c7id2")
+centered = false
+
+[node name="Title" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 157.0
+offset_right = 859.0
+offset_bottom = 267.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 64
+text = "Change Your Look!"
+
+[node name="green_hat" type="Button" parent="."]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 350.0
+offset_right = 339.0
+offset_bottom = 411.0
+text = "Green Hat"
+
+[node name="red_hat" type="Button" parent="."]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 548.0
+offset_right = 339.0
+offset_bottom = 607.0
+text = "Red Hat"
+
+[node name="blue_hat" type="Button" parent="."]
+layout_mode = 0
+offset_left = 395.0
+offset_top = 348.0
+offset_right = 590.0
+offset_bottom = 412.0
+text = "Blue Hat"
+
+[node name="pink_hat" type="Button" parent="."]
+layout_mode = 0
+offset_left = 392.0
+offset_top = 546.0
+offset_right = 591.0
+offset_bottom = 611.0
+text = "Pink Hat"
+
+[node name="Logout" type="Button" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = 125.0
+offset_bottom = 62.0
+text = "Back to Level Select"
+
+[connection signal="pressed" from="green_hat" to="." method="_on_green_hat_pressed"]
+[connection signal="pressed" from="red_hat" to="." method="_on_red_hat_pressed"]
+[connection signal="pressed" from="blue_hat" to="." method="_on_blue_hat_pressed"]
+[connection signal="pressed" from="pink_hat" to="." method="_on_pink_hat_pressed"]
+[connection signal="pressed" from="Logout" to="." method="_on_logout_pressed"]

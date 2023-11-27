@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dln5duhigj10e"]
+[gd_scene load_steps=7 format=3 uid="uid://dln5duhigj10e"]
 
 [ext_resource type="Script" path="res://scenes/level_select_screen.gd" id="1_2umfe"]
+[ext_resource type="PackedScene" uid="uid://dcxia27cc1sat" path="res://scenes/BFS1.tscn" id="2_f7sec"]
 [ext_resource type="Texture2D" uid="uid://ce7sma4dnqqke" path="res://sprites/bg.png" id="2_wt16x"]
+[ext_resource type="PackedScene" path="res://scenes/BFS2.tscn" id="3_g1p4j"]
+[ext_resource type="PackedScene" uid="uid://c4nlk5yfyrq06" path="res://scenes/DFS1.tscn" id="3_nsig5"]
+[ext_resource type="PackedScene" uid="uid://d0beg6y1rb4fy" path="res://scenes/DFS2.tscn" id="5_2q7x0"]
 
 [node name="LevelSelectScreen" type="Control"]
 layout_mode = 3
@@ -9,6 +13,10 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_2umfe")
+bfs1 = ExtResource("2_f7sec")
+bfs2 = ExtResource("3_g1p4j")
+dfs1 = ExtResource("3_nsig5")
+dfs2 = ExtResource("5_2q7x0")
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("2_wt16x")
@@ -58,5 +66,41 @@ offset_bottom = 601.0
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "Depth-First Search:"
 
-[connection signal="pressed" from="BFS1" to="." method="_on_button_pressed"]
+[node name="BFS2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 396.0
+offset_right = 649.0
+offset_bottom = 460.0
+text = "Level 2"
+
+[node name="DFS2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 548.0
+offset_right = 648.0
+offset_bottom = 613.0
+text = "Level 2"
+
+[node name="Logout" type="Button" parent="."]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = 125.0
+offset_bottom = 62.0
+text = "Logout"
+
+[node name="Cosmetics" type="Button" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 17.0
+offset_right = 977.0
+offset_bottom = 69.0
+text = "Cosmetics"
+
+[connection signal="pressed" from="BFS1" to="." method="_on_bfs1_pressed"]
 [connection signal="pressed" from="DFS1" to="." method="_on_dfs_1_pressed"]
+[connection signal="pressed" from="BFS2" to="." method="_on_bfs2_pressed"]
+[connection signal="pressed" from="DFS2" to="." method="_on_dfs2_pressed"]
+[connection signal="pressed" from="Logout" to="." method="_on_logout_pressed"]
+[connection signal="pressed" from="Cosmetics" to="." method="_on_cosmetics_pressed"]

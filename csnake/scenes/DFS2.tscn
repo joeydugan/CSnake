@@ -1,0 +1,62 @@
+[gd_scene load_steps=11 format=3 uid="uid://d0beg6y1rb4fy"]
+
+[ext_resource type="Script" path="res://scenes/DFS2.gd" id="1_e7lor"]
+[ext_resource type="PackedScene" uid="uid://dbjnecgl87bvo" path="res://scenes/snake_segment.tscn" id="2_eg15m"]
+[ext_resource type="Texture2D" uid="uid://ce7sma4dnqqke" path="res://sprites/bg.png" id="3_arhsv"]
+[ext_resource type="Texture2D" uid="uid://7wwa1ye03iga" path="res://sprites/num1.png" id="4_snfh2"]
+[ext_resource type="Texture2D" uid="uid://bmefb25w3nvp6" path="res://sprites/num2.png" id="5_52vi5"]
+[ext_resource type="Texture2D" uid="uid://ccfuigqym1bgm" path="res://sprites/num3.png" id="6_fglju"]
+[ext_resource type="Texture2D" uid="uid://cu203f6ixgj5t" path="res://sprites/num4.png" id="7_y0h1w"]
+[ext_resource type="Texture2D" uid="uid://rhp0o0vb730s" path="res://sprites/num5.png" id="8_k8843"]
+[ext_resource type="Texture2D" uid="uid://cbcc1feinplq3" path="res://sprites/num6.png" id="9_hx6tr"]
+[ext_resource type="Texture2D" uid="uid://dox5wgrth2s4k" path="res://sprites/num7.png" id="10_54gvd"]
+
+[node name="DFS2" type="Node"]
+script = ExtResource("1_e7lor")
+snake_scene = ExtResource("2_eg15m")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(500, 500)
+texture = ExtResource("3_arhsv")
+
+[node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="num1" type="Sprite2D" parent="."]
+texture = ExtResource("4_snfh2")
+centered = false
+
+[node name="num2" type="Sprite2D" parent="."]
+texture = ExtResource("5_52vi5")
+centered = false
+
+[node name="num3" type="Sprite2D" parent="."]
+texture = ExtResource("6_fglju")
+centered = false
+
+[node name="num4" type="Sprite2D" parent="."]
+texture = ExtResource("7_y0h1w")
+centered = false
+
+[node name="num5" type="Sprite2D" parent="."]
+texture = ExtResource("8_k8843")
+centered = false
+
+[node name="num6" type="Sprite2D" parent="."]
+texture = ExtResource("9_hx6tr")
+centered = false
+
+[node name="num7" type="Sprite2D" parent="."]
+texture = ExtResource("10_54gvd")
+centered = false
+
+[node name="Instructions" type="RichTextLabel" parent="."]
+offset_left = 245.0
+offset_top = 122.0
+offset_right = 777.0
+offset_bottom = 176.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+text = "Complete A Depth-First Search!"
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

@@ -13,7 +13,7 @@ var old_data : Array
 var snake_data : Array
 var snake : Array
 
-var start_pos = Vector2(19,19)
+var start_pos = Vector2(18, 6)
 var up = Vector2(0, -1)
 var down = Vector2(0, 1)
 var left = Vector2(-1, 0)
@@ -30,15 +30,17 @@ var num1_pos = Vector2(12 * 25, 16 * 25)
 var num2_pos = Vector2(18 * 25, 12 * 25)
 var num3_pos = Vector2(24 * 25, 16 * 25)
 
+var end_flag = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	new_game()
 	
 func new_game():
-	score = 0
+	score = 5000
 	# $Hud.get_node("ScoreLabel").text = "SCORE: " + str(score)'
 	get_tree().call_group("segments", "queue_free")
-	move_direction = up
+	move_direction = down
 	can_move = true
 	$num1.position = num1_pos
 	$num2.position = num2_pos
@@ -58,7 +60,7 @@ func generate_snake():
 	snake.clear()
 
 	for i in range(3): # change this number to make the snake bigger!
-		add_segment(start_pos + Vector2(0, i))
+		add_segment(start_pos + Vector2(i, 0))
 		
 func add_segment(pos):
 	snake_data.append(pos)
@@ -70,6 +72,9 @@ func add_segment(pos):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if end_flag == false:
+		score -= delta/3
+		$Panel/Label.text = str(score)
 	move_snake()
 	
 func move_snake():
@@ -141,5 +146,25 @@ func check_num3():
 
 			
 func end_game():
-	get_tree().change_scene_to_file("res://scenes/level_select_screen.tscn")
+	
+	$MoveTimer.stop()
+	end_flag = true
+	
+	var final_score = score
+	
+	if SilentWolf.Auth.logged_in_player != null:
+		SilentWolf.Scores.save_score(SilentWolf.Auth.logged_in_player, final_score, 'dfs1')
+	
+	
+	var sw_result = await SilentWolf.Scores.get_score_position(final_score, 'dfs1').sw_get_position_complete
+	var position = sw_result.position
+	
+	var sw_result2 = await SilentWolf.Scores.get_scores(0, "dfs1").sw_get_scores_complete
+	var scores = sw_result2.scores
+	
+	print(position)
+	print(scores)
+	
+	
+	get_tree().change_scene_to_file("res://addons/silent_wolf/Scores/Leaderboard.tscn")
 

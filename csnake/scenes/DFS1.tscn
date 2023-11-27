@@ -39,4 +39,19 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
 text = "Complete A Depth-First Search!"
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = 748.0
+offset_top = 14.0
+offset_right = 943.0
+offset_bottom = 80.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 194.0
+offset_bottom = 67.0
+text = "score"
+horizontal_alignment = 1
+
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]

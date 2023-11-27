@@ -40,5 +40,15 @@ offset_right = 605.0
 offset_bottom = 604.0
 text = "Login"
 
+[node name="Guest" type="Button" parent="."]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 674.0
+offset_right = 957.0
+offset_bottom = 748.0
+text = "Continue as Guest
+(Will Not Save Scores)"
+
 [connection signal="pressed" from="Register" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Login" to="." method="_on_dfs_1_pressed"]
+[connection signal="pressed" from="Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Guest" to="." method="_on_guest_pressed"]

@@ -15,6 +15,33 @@ snake_scene = ExtResource("2_23pwf")
 position = Vector2(500, 500)
 texture = ExtResource("3_1dbd1")
 
+[node name="ScorePanel" type="Panel" parent="."]
+anchors_preset = -1
+anchor_right = 0.04
+anchor_bottom = 0.05
+offset_left = 166.0
+offset_top = 340.0
+offset_right = 789.0
+offset_bottom = 635.0
+
+[node name="FinalScore" type="Label" parent="ScorePanel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 28.0
+offset_top = 35.0
+offset_right = 640.8
+offset_bottom = 276.36
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="ScorePanel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 354.0
+offset_right = 413.0
+offset_bottom = 429.0
+text = "Go to Leaderboard"
+
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 0.1
 
@@ -39,4 +66,20 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 32
 text = "Complete A Breadth-First Search!"
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = 748.0
+offset_top = 14.0
+offset_right = 943.0
+offset_bottom = 80.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 194.0
+offset_bottom = 67.0
+text = "score"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="ScorePanel/Button" to="." method="_on_go_to_leaderboard_pressed"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
